@@ -5,27 +5,25 @@ from typing import Dict, List, Optional, Tuple
 sys.setrecursionlimit(10_000)
 
 
-LOCAL_TEST: Optional[str] = None
+LOCAL_TEST: Optional[str] = "0\n(p|!p)\n"
 
-# Example 1: Valid
-# LOCAL_TEST = "0\n(p|!p)\n"
 
-# Example 2: Satisfiable
+# Example 1: Satisfiable
 # LOCAL_TEST = "0\n(p&q)\n"
 
-# Example 3: Unsatisfiable
+# Example 2: Unsatisfiable
 # LOCAL_TEST = "0\n(p&!p)\n"
 
-# Example 4: Valid entailment
+# Example 3: Valid entailment
 # LOCAL_TEST = "2\n(p->q)\np\nq\n"
 
-# Example 5: Invalid entailment
+# Example 4: Invalid entailment
 # LOCAL_TEST = "1\n(p|q)\np\n"
 
-# Example 6: Vacuously valid
+# Example 5: Vacuously valid
 # LOCAL_TEST = "2\np\n!p\nq\n"
 
-# Example 7: Invalid with no variables
+# Example 6: Invalid with no variables
 # LOCAL_TEST = "1\nT\nF\n"
 
 
