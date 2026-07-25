@@ -1,39 +1,15 @@
 import sys
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List, Tuple
 
 
 sys.setrecursionlimit(10_000)
 
-
-LOCAL_TEST: Optional[str] = "0\n(p|!p)\n"
-
-
-# Example 1: Satisfiable
-# LOCAL_TEST = "0\n(p&q)\n"
-
-# Example 2: Unsatisfiable
-# LOCAL_TEST = "0\n(p&!p)\n"
-
-# Example 3: Valid entailment
-# LOCAL_TEST = "2\n(p->q)\np\nq\n"
-
-# Example 4: Invalid entailment
-# LOCAL_TEST = "1\n(p|q)\np\n"
-
-# Example 5: Vacuously valid
-# LOCAL_TEST = "2\np\n!p\nq\n"
-
-# Example 6: Invalid with no variables
-# LOCAL_TEST = "1\nT\nF\n"
-
-
 class FormulaParser:
-    """
-    فرمول را parse کرده و مقدار آن را برای تمام valuationها
-    به‌صورت یک عدد صحیح bitset محاسبه می‌کند.
+    
+    # Parses the formula and evaluates it for all valuations,
+    # storing the results as an integer bitset.
 
-    هر بیت نشان‌دهنده نتیجه فرمول در یک valuation است.
-    """
+    # Each bit represents the result of the formula for one valuation.
 
     def __init__(
         self,
@@ -167,10 +143,9 @@ class FormulaParser:
 
 
 def collect_variables(formulas: List[str]) -> List[str]:
-    """
-    تمام متغیرهای ظاهرشده را به ترتیب الفبایی برمی‌گرداند.
-    """
 
+    # returns all the appeared variables alphabetically
+    
     variables = set()
 
     for formula in formulas:
@@ -184,18 +159,17 @@ def collect_variables(formulas: List[str]) -> List[str]:
 def build_variable_masks(
     variables: List[str],
 ) -> Tuple[Dict[str, int], int]:
-    """
-    برای هر متغیر یک bit mask می‌سازد.
+    
+    # Creates a bitmask for each variable.
 
-    ترتیب valuationها:
-        False قبل از True
+    # The order of valuations:
+    #     False before True
 
-    مثال برای p و q:
-        p=False q=False
-        p=False q=True
-        p=True  q=False
-        p=True  q=True
-    """
+    # Example for p and q:
+    #     p=False q=False
+    #     p=False q=True
+    #     p=True  q=False
+    #     p=True  q=True
 
     variable_count = len(variables)
 
@@ -238,9 +212,6 @@ def evaluate_formula(
 
 
 def find_first_set_bit(value: int) -> int:
-    """
-    شماره اولین بیت 1 را برمی‌گرداند.
-    """
 
     lowest_set_bit = value & -value
     return lowest_set_bit.bit_length() - 1
@@ -250,10 +221,9 @@ def format_valuation(
     valuation_index: int,
     variables: List[str],
 ) -> str:
-    """
-    valuation را با ترتیب الفبایی متغیرها چاپ می‌کند.
-    """
 
+    # prints valuation alphabetically
+    
     variable_count = len(variables)
     result = []
 
@@ -353,14 +323,24 @@ def solve(data: str) -> str:
 
 
 def main() -> None:
-    if LOCAL_TEST is None:
-        input_data = sys.stdin.read()
-    else:
-        input_data = LOCAL_TEST
+    premise_count = int(input().strip())
 
-    result = solve(input_data)
+    premises = [
+        input().strip()
+        for _ in range(premise_count)
+    ]
 
-    print(result)
+    conclusion = input().strip()
+
+    input_data = "\n".join(
+        [
+            str(premise_count),
+            *premises,
+            conclusion,
+        ]
+    )
+
+    print(solve(input_data))
 
 
 if __name__ == "__main__":

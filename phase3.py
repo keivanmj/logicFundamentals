@@ -1,25 +1,7 @@
 import sys
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List, Tuple
 
 sys.setrecursionlimit(10_000)
-
-
-LOCAL_TEST: Optional[str] = "!(p&q)\n(!p|!q)\n"
-
-# Example 2: Not Equivalent
-# LOCAL_TEST = "(p->q)\n(q->p)\n"
-
-# Example 3: Equivalent
-# LOCAL_TEST = "(p|q)\n(q|p)\n"
-
-# Example 4: Not Equivalent
-# LOCAL_TEST = "p\n(p&q)\n"
-
-# Example 5: Equivalent
-# LOCAL_TEST = "!(p|q)\n(!p&!q)\n"
-
-# Example 6: Equivalent
-# LOCAL_TEST = "(p<->q)\n((p->q)&(q->p))\n"
 
 
 class FormulaParser:
@@ -223,9 +205,6 @@ def format_valuation(
     valuation_index: int,
     variables: List[str],
 ) -> str:
-    """
-    valuation را با ترتیب الفبایی متغیرها چاپ می‌کند.
-    """
 
     variable_count = len(variables)
 
@@ -302,14 +281,17 @@ def solve(input_data: str) -> str:
     )
 
 def main() -> None:
-    if LOCAL_TEST is not None:
-        input_data = LOCAL_TEST
-    else:
-        input_data = sys.stdin.read()
+    first_formula = input().strip()
+    second_formula = input().strip()
 
-    result = solve(input_data)
+    input_data = "\n".join(
+        [
+            first_formula,
+            second_formula,
+        ]
+    )
 
-    print(result)
+    print(solve(input_data))
 
 
 if __name__ == "__main__":

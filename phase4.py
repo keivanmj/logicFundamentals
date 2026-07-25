@@ -459,11 +459,24 @@ def solve(input_data: str) -> str:
 
 
 def main() -> None:
-    input_data = sys.stdin.read()
+    premise_count = int(input().strip())
 
-    result = solve(input_data)
+    premises = [
+        input().strip()
+        for _ in range(premise_count)
+    ]
 
-    print(result)
+    conclusion = input().strip()
+
+    input_data = "\n".join(
+        [
+            str(premise_count),
+            *premises,
+            conclusion,
+        ]
+    )
+
+    print(solve(input_data))
 
 
 if __name__ == "__main__":

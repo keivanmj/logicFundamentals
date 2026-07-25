@@ -551,8 +551,8 @@ def render_formula(node: Node) -> str:
     if node.kind == "not":
         return "!" + render_formula(node.left)
 
-    # Consecutive identical AND/OR operators must be
-    # printed in associative-left form.
+    # Consecutive identical AND/OR operators must be printed in associative-left form.
+
     if node.kind in ("and", "or"):
         operands = []
 
