@@ -623,31 +623,4 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    # main()
-
-    formula = "!(!p&!q)"
-    # formula = "((p&T)|F)"
-    # formula = "(p<->!p)"
-    # formula = "(p->q)"
-    # formula = "!(p|q)"
-    # formula = "((p|q)&(!p|r))"
-    # formula = "((a&b)|(c&d))"
-    # formula = "((a|b)&(c|d))"
-    # formula = "((p&!p)|q)"
-    # formula = "((p|!p)&q)"
-    # formula = "(((p&T)|F)&p)"
-    # formula = "!((p->q)&(q->r))"
-
-    cnf_text, dnf_text, simplified_text = solve(formula)
-
-    print("Input:")
-    print(formula)
-
-    print("\nCNF:")
-    print(cnf_text)
-
-    print("\nDNF:")
-    print(dnf_text)
-
-    print("\nSimplified:")
-    print(simplified_text)
+    main()
