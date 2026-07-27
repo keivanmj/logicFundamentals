@@ -5,7 +5,7 @@ from typing import Optional, List
 
 sys.setrecursionlimit(10_000)
 
-
+# frozen means after creating a node, you cant change its variables
 @dataclass(frozen=True)
 class Node:
     kind: str
