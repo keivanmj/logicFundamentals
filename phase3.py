@@ -1,3 +1,4 @@
+# fromula equivalence checker
 import sys
 from typing import Dict, List, Tuple
 

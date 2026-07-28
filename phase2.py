@@ -1,3 +1,4 @@
+# counter example generator
 import sys
 from typing import Dict, List, Tuple
 
@@ -170,7 +171,7 @@ def build_variable_masks(
     #     p=False q=True
     #     p=True  q=False
     #     p=True  q=True
-
+    # p = 1100, q = 1010
     variable_count = len(variables)
 
     valuation_count = 1 << variable_count

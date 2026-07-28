@@ -1,8 +1,9 @@
+# premise minmizer
 import sys
 from typing import Dict, List, Tuple
 
 sys.setrecursionlimit(10_000)
-
+# an algorithm that activates all the premises at first and then disables them one by one to see which one's are unneccesary to find a minimum set
 class FormulaParser:
 
     def __init__(
@@ -358,6 +359,7 @@ def solve(input_data: str) -> str:
 
     all_active = [True] * premise_count
 
+    # اشتراک همه ی مقدمات
     full_premise_conjunction = calculate_conjunction(
         premise_masks=premise_masks,
         active=all_active,
